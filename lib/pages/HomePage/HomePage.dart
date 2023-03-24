@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:namer_app/pages/AboutUs/AboutUs.dart';
 import 'package:namer_app/pages/FavoritesPage/FavoritesPage.dart';
 import 'package:namer_app/pages/GeneratorPage/GeneratorPage.dart';
 import 'package:namer_app/pages/SettingPage/SettingPage.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -13,6 +15,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    var strings = AppLocalizations.of(context)!;
     Widget page;
     switch (selectedIndex) {
       case 0:
@@ -23,6 +26,9 @@ class _HomePageState extends State<HomePage> {
         break;
       case 2:
         page = SettingPage();
+        break;
+      case 3:
+        page = AboutUs();
         break;
       default:
         throw UnimplementedError('no widget for $selectedIndex');
@@ -37,15 +43,19 @@ class _HomePageState extends State<HomePage> {
               destinations: [
                 NavigationRailDestination(
                   icon: Icon(Icons.home),
-                  label: Text('Home'),
+                  label: Text(strings.home),
                 ),
                 NavigationRailDestination(
                   icon: Icon(Icons.favorite),
-                  label: Text('Favorites'),
+                  label: Text(strings.favorite),
                 ),
                 NavigationRailDestination(
                   icon: Icon(Icons.settings),
-                  label: Text('Setting'),
+                  label: Text(strings.setting),
+                ),
+                NavigationRailDestination(
+                  icon: Icon(Icons.vape_free),
+                  label: Text(strings.setting),
                 ),
               ],
               selectedIndex: selectedIndex,

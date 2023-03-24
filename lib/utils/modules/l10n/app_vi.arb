@@ -1,9 +1,12 @@
 {
   "app_name": "Tên Ứng Dụng",
   "english": "Tiếng Anh",
+  "favorite": "Yêu thích",
+  "home": "Trang chủ",
   "japanese": "Tiếng Nhật",
   "like": "Thích",
   "next": "Tiếp tục",
+  "setting": "Cài đặt",
   "unlike": "Bỏ thích",
   "vietnamese": "Tiếng Việt"
 }

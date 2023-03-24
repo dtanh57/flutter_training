@@ -1,9 +1,12 @@
 {
   "app_name": "App Name",
   "english": "English",
+  "favorite": "Favorites",
+  "home": "Home",
   "japanese": "Japanese",
   "like": "Like",
   "next": "Next",
+  "setting": "Setting",
   "unlike": "Unlike",
   "vietnamese": "Vietnamese"
 }
