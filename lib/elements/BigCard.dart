@@ -1,5 +1,6 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
+import 'package:namer_app/utils/resources/app_dimens.dart';
 
 class BigCard extends StatelessWidget {
   const BigCard({
@@ -14,6 +15,7 @@ class BigCard extends StatelessWidget {
     final style = theme.textTheme.displayMedium!.copyWith(
       color: theme.colorScheme.onPrimary,
     );
+    var a = new AppDimens();
 
     return Card(
       color: theme.colorScheme.primary,
@@ -21,7 +23,7 @@ class BigCard extends StatelessWidget {
         padding: const EdgeInsets.all(20),
         child: Text(
           pair.asLowerCase,
-          style: style,
+          style: TextStyle(fontSize: 40),
           semanticsLabel: "${pair.first} ${pair.second}",
         ),
       ),

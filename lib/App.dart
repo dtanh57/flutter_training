@@ -1,9 +1,9 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
-import 'package:namer_app/pages/HomePage/HomePage.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:namer_app/pages/AppIntro/app_intro.dart';
 import 'package:namer_app/utils/modules/l10n/l10n.dart';
 import 'package:namer_app/utils/modules/providers/locale_provider.dart';
-import 'package:namer_app/utils/resources/app_dimens.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -19,22 +19,46 @@ class App extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => AppState()),
       ],
       child: Consumer<LocaleProvider>(builder: (context, provider, snapshot) {
-        return MaterialApp(
-          locale: provider.locale,
-          localizationsDelegates: [
-            AppLocalizations.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          supportedLocales: L10n.all,
-          debugShowCheckedModeBanner: false,
-          title: 'Namer App',
-          theme: ThemeData(
-            useMaterial3: true,
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-          ),
-          home: HomePage(),
+        return ScreenUtilInit(
+          designSize: const Size(360, 690),
+          minTextAdapt: true,
+          splitScreenMode: true,
+          builder: (context, child) {
+            return MaterialApp(
+              locale: provider.locale,
+              localizationsDelegates: [
+                AppLocalizations.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: L10n.all,
+              debugShowCheckedModeBanner: false,
+              title: 'Namer App',
+              theme: ThemeData(
+                useMaterial3: true,
+                colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+              ),
+              home: AppIntro(),
+            );
+          },
+          // child: MaterialApp(
+          //   locale: provider.locale,
+          //   localizationsDelegates: [
+          //     AppLocalizations.delegate,
+          //     GlobalMaterialLocalizations.delegate,
+          //     GlobalWidgetsLocalizations.delegate,
+          //     GlobalCupertinoLocalizations.delegate,
+          //   ],
+          //   supportedLocales: L10n.all,
+          //   debugShowCheckedModeBanner: false,
+          //   title: 'Namer App',
+          //   theme: ThemeData(
+          //     useMaterial3: true,
+          //     colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+          //   ),
+          //   home: AppIntro(),
+          // ),
         );
       }),
     );
