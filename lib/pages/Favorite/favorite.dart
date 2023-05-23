@@ -1,8 +1,10 @@
-import 'dart:ffi';
 import 'package:english_words/english_words.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:namer_app/App.dart';
+import 'package:namer_app/elements/app_bar_header.dart';
+import 'package:namer_app/elements/app_text.dart';
+import 'package:namer_app/utils/resources/common_function.dart';
 import 'package:provider/provider.dart';
 
 class FavoritesPage extends StatelessWidget {
@@ -11,18 +13,15 @@ class FavoritesPage extends StatelessWidget {
     var appState = context.watch<AppState>();
     List<WordPair> favList = appState.favorites;
 
-    return SafeArea(
-      child: favList.isEmpty
-          ? Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
+    return Scaffold(
+      appBar: AppBarHeader(title: Text('Favorite')),
+      body: favList.isEmpty
+          ? Container(
+              alignment: Alignment.center,
+              child: AppText(
+                text:
                     'You don\'t have a favorite word. Please like some words.',
-                    textAlign: TextAlign.center,
-                  ),
-                ],
+                textAlign: TextAlign.center,
               ),
             )
           : Padding(
@@ -46,30 +45,11 @@ class FavoritesPage extends StatelessWidget {
                           ),
                         ),
                         IconButton(
-                          onPressed: () => {
-                            showDialog<String>(
-                              context: context,
-                              builder: (BuildContext context) =>
-                                  CupertinoAlertDialog(
-                                title: Text(item.value.asLowerCase),
-                                content: Text('Do you want to unlike it?'),
-                                actions: <Widget>[
-                                  TextButton(
-                                    onPressed: () =>
-                                        Navigator.pop(context, 'Cancel'),
-                                    child: Text('Cancel'),
-                                  ),
-                                  TextButton(
-                                    onPressed: () {
-                                      appState.unLike(item.value);
-                                      Navigator.pop(context, 'OK');
-                                    },
-                                    child: Text('OK'),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          },
+                          onPressed: () => Utils.alertDialog(context,
+                              title: item.value.asLowerCase,
+                              content: 'Do you want to unlike it?',
+                              onPressConfirm: () =>
+                                  appState.unLike(item.value)),
                           icon: Icon(Icons.favorite),
                         ),
                       ],

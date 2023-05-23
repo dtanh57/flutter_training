@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:namer_app/elements/app_bar_header.dart';
 
 class SettingPage extends StatefulWidget {
   @override
@@ -18,9 +19,7 @@ class _SettingPageState extends State<SettingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Dropdown Button Example'),
-      ),
+      appBar: AppBarHeader(title: Text('Setting')),
       body: Center(
         child: DropdownButton<String>(
           value: _selectedItem,

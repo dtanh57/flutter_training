@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:namer_app/elements/app_bar_header.dart';
 
 class Test extends StatelessWidget {
   final int index; // Add index as a class member
@@ -7,30 +8,35 @@ class Test extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
-        middle: Text('Page 1 of tab $index'),
+    return Scaffold(
+      appBar: AppBarHeader(
+        title: Text('Page 1 of tab $index'),
       ),
-      child: Center(
+      body: Center(
         child: CupertinoButton(
           child: const Text('Next page'),
           onPressed: () {
             Navigator.of(context).push(
               CupertinoPageRoute<void>(
                 builder: (BuildContext context) {
-                  return CupertinoPageScaffold(
-                      navigationBar: CupertinoNavigationBar(
-                        leading: RawMaterialButton(
-                          padding: EdgeInsets.zero,
-                          constraints: BoxConstraints(),
-                          materialTapTargetSize:
-                              MaterialTapTargetSize.shrinkWrap,
-                          child: Icon(Icons.arrow_back),
-                          onPressed: () => Navigator.of(context).pop(),
-                        ),
-                        middle: Text('Page 2 of tab $index'),
+                  return Scaffold(
+                      appBar: AppBarHeader(
+                        title: Text('Page 2 of tab $index'),
                       ),
-                      child: Text('lon'));
+                      body: Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              'Text that fills the row',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 16,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ));
                 },
               ),
             );

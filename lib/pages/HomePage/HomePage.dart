@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:namer_app/pages/AboutUs/AboutUs.dart';
+import 'package:namer_app/pages/AboutUs/about_us.dart';
 import 'package:namer_app/pages/Favorite/favorite.dart';
 import 'package:namer_app/pages/Generator/generator.dart';
 import 'package:namer_app/pages/SettingPage/setting.dart';
@@ -41,16 +41,16 @@ class _HomePageState extends State<HomePage> {
             label: 'Favorite',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Setting',
+            icon: Icon(Icons.search),
+            label: 'Explore',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.vape_free),
             label: 'About us',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Explore',
+            icon: Icon(Icons.settings),
+            label: 'Setting',
           ),
         ],
       ),
@@ -70,9 +70,7 @@ class _HomePageState extends State<HomePage> {
             });
           case 2:
             return CupertinoTabView(builder: (context) {
-              return CupertinoPageScaffold(
-                child: SettingPage(),
-              );
+              return Test(index: index);
             });
           case 3:
             return CupertinoTabView(builder: (context) {
@@ -82,7 +80,9 @@ class _HomePageState extends State<HomePage> {
             });
           case 4:
             return CupertinoTabView(builder: (context) {
-              return Test(index: index);
+              return CupertinoPageScaffold(
+                child: SettingPage(),
+              );
             });
           default:
             return CupertinoTabView(builder: (context) {

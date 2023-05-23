@@ -42,23 +42,6 @@ class App extends StatelessWidget {
               home: AppIntro(),
             );
           },
-          // child: MaterialApp(
-          //   locale: provider.locale,
-          //   localizationsDelegates: [
-          //     AppLocalizations.delegate,
-          //     GlobalMaterialLocalizations.delegate,
-          //     GlobalWidgetsLocalizations.delegate,
-          //     GlobalCupertinoLocalizations.delegate,
-          //   ],
-          //   supportedLocales: L10n.all,
-          //   debugShowCheckedModeBanner: false,
-          //   title: 'Namer App',
-          //   theme: ThemeData(
-          //     useMaterial3: true,
-          //     colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-          //   ),
-          //   home: AppIntro(),
-          // ),
         );
       }),
     );
