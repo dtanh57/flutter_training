@@ -135,6 +135,8 @@ class _HomePageState extends State<HomePage> {
                               navigationBar: CupertinoNavigationBar(
                                 leading: RawMaterialButton(
                                   padding: EdgeInsets.zero,
+                                  constraints: BoxConstraints(),
+                                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                                   child: Icon(Icons.arrow_back),
                                   onPressed: () => Navigator.of(context).pop(),
                                 ),
