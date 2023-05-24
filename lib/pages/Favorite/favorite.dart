@@ -1,5 +1,4 @@
 import 'package:english_words/english_words.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:namer_app/App.dart';
 import 'package:namer_app/elements/app_bar_header.dart';
@@ -24,38 +23,40 @@ class FavoritesPage extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
             )
-          : Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: favList.asMap().entries.map((item) {
-                  return Container(
-                    clipBehavior: Clip.none,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Expanded(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text('${item.key + 1}'),
-                              SizedBox(width: 12),
-                              Expanded(child: Text(item.value.asLowerCase))
-                            ],
+          : Scrollbar(
+              child: SingleChildScrollView(
+                padding: EdgeInsets.only(bottom: 100, left: 20, right: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: favList.asMap().entries.map((item) {
+                    return Container(
+                      clipBehavior: Clip.none,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Expanded(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text('${item.key + 1}'),
+                                SizedBox(width: 12),
+                                Expanded(child: Text(item.value.asLowerCase))
+                              ],
+                            ),
                           ),
-                        ),
-                        IconButton(
-                          onPressed: () => Utils.alertDialog(context,
-                              title: item.value.asLowerCase,
-                              content: 'Do you want to unlike it?',
-                              onPressConfirm: () =>
-                                  appState.unLike(item.value)),
-                          icon: Icon(Icons.favorite),
-                        ),
-                      ],
-                    ),
-                  );
-                }).toList(),
+                          IconButton(
+                            onPressed: () => Utils.alertDialog(context,
+                                title: item.value.asLowerCase,
+                                content: 'Do you want to unlike it?',
+                                onPressConfirm: () =>
+                                    appState.unLike(item.value)),
+                            icon: Icon(Icons.favorite),
+                          ),
+                        ],
+                      ),
+                    );
+                  }).toList(),
+                ),
               ),
             ),
     );
