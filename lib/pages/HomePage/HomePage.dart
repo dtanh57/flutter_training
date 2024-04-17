@@ -5,7 +5,7 @@ import 'package:namer_app/pages/AboutUs/about_us.dart';
 import 'package:namer_app/pages/Favorite/favorite.dart';
 import 'package:namer_app/pages/Generator/generator.dart';
 import 'package:namer_app/pages/SettingPage/setting.dart';
-import 'package:namer_app/pages/Test/test.dart';
+import 'package:namer_app/pages/Users/users.dart';
 
 class TabScaffoldApp extends StatelessWidget {
   const TabScaffoldApp({super.key});
@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.search),
-            label: 'Explore',
+            label: 'Users',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.vape_free),
@@ -71,7 +71,7 @@ class _HomePageState extends State<HomePage> {
             });
           case 2:
             return CupertinoTabView(builder: (context) {
-              return Test(index: index);
+              return Users();
             });
           case 3:
             return CupertinoTabView(builder: (context) {
