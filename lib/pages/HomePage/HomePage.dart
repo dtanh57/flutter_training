@@ -4,6 +4,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:namer_app/pages/AboutUs/about_us.dart';
 import 'package:namer_app/pages/Favorite/favorite.dart';
 import 'package:namer_app/pages/Generator/generator.dart';
+import 'package:namer_app/pages/Products/products.dart';
 import 'package:namer_app/pages/SettingPage/setting.dart';
 import 'package:namer_app/pages/Users/users.dart';
 
@@ -38,21 +39,27 @@ class _HomePageState extends State<HomePage> {
             label: strings.home,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: strings.favorite,
+            icon: Icon(Icons.history),
+            label: strings.purchase_history,
           ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.home),
+          //   label: strings.home,
+          // ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.favorite),
+          //   label: strings.favorite,
+          // ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.search),
+          //   label: 'Users',
+          // ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.vape_free),
+          //   label: 'About us',
+          // ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Users',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.vape_free),
-            label: 'About us',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: strings.setting
-          ),
+              icon: Icon(Icons.settings), label: strings.setting),
         ],
       ),
       tabBuilder: (context, index) {
@@ -60,7 +67,7 @@ class _HomePageState extends State<HomePage> {
           case 0:
             return CupertinoTabView(builder: (context) {
               return CupertinoPageScaffold(
-                child: GeneratorPage(),
+                child: Products(),
               );
             });
           case 1:
@@ -69,17 +76,29 @@ class _HomePageState extends State<HomePage> {
                 child: FavoritesPage(),
               );
             });
+          // case 0:
+          //   return CupertinoTabView(builder: (context) {
+          //     return CupertinoPageScaffold(
+          //       child: GeneratorPage(),
+          //     );
+          //   });
+          // case 1:
+          //   return CupertinoTabView(builder: (context) {
+          //     return CupertinoPageScaffold(
+          //       child: FavoritesPage(),
+          //     );
+          //   });
+          // case 2:
+          //   return CupertinoTabView(builder: (context) {
+          //     return Users();
+          //   });
+          // case 3:
+          //   return CupertinoTabView(builder: (context) {
+          //     return CupertinoPageScaffold(
+          //       child: AboutUs(),
+          //     );
+          //   });
           case 2:
-            return CupertinoTabView(builder: (context) {
-              return Users();
-            });
-          case 3:
-            return CupertinoTabView(builder: (context) {
-              return CupertinoPageScaffold(
-                child: AboutUs(),
-              );
-            });
-          case 4:
             return CupertinoTabView(builder: (context) {
               return CupertinoPageScaffold(
                 child: SettingPage(),
